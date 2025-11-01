@@ -5,51 +5,87 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portal de Acessos - Miqueias</title>
 
+  <!-- Tailwind e Lucide -->
   <script>
     tailwind = { config: { darkMode: 'class' } }
   </script>
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
+  <!-- Favicon -->
+  <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/1828/1828501.png" type="image/png" />
+
   <style>
-    * { transition: all 0.25s ease-in-out; }
+    * {
+      transition: all 0.25s ease-in-out;
+    }
+
+    a {
+      transition: transform 0.2s ease, background-color 0.2s ease;
+    }
+
+    a:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    a:visited {
+      opacity: 0.9;
+    }
+
+    section:hover {
+      background-color: rgba(255, 255, 255, 0.02);
+      border-radius: 10px;
+      padding: 5px;
+    }
   </style>
 </head>
 
-<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center p-6">
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center">
 
-  <div class="w-full max-w-3xl bg-gray-800 shadow-2xl rounded-2xl p-8 mt-10">
-    <div class="flex items-center justify-between mb-8">
-      <h1 class="text-3xl font-bold flex items-center gap-2">
-        <i data-lucide="grid" class="w-7 h-7 text-blue-500"></i>
+  <!-- Cabeçalho fixo -->
+  <header class="fixed top-0 left-0 w-full bg-gray-800 shadow-lg z-50">
+    <div class="max-w-3xl mx-auto flex justify-between items-center p-4">
+      <h1 class="text-2xl font-bold flex items-center gap-2">
+        <i data-lucide="grid" class="w-6 h-6 text-blue-500"></i>
         Portal de Acessos
       </h1>
+      <button id="toggleDarkMode" class="p-2 rounded-full bg-gray-700 hover:bg-gray-600">
+        <i data-lucide="sun"></i>
+      </button>
     </div>
+  </header>
 
-    <div class="mb-6">
+  <!-- Conteúdo principal -->
+  <main class="container mx-auto max-w-3xl bg-gray-800 shadow-2xl rounded-2xl p-8 mt-24 mb-10">
+    <!-- Campo de busca -->
+    <div class="relative mb-6">
+      <i data-lucide="search" class="absolute left-3 top-3.5 text-gray-400 w-5 h-5"></i>
       <input
         type="text"
         id="search"
-        placeholder="🔍 Buscar..."
-        class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-900 border-gray-700 placeholder-gray-400"
+        placeholder="Buscar..."
+        class="w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-900 border-gray-700 placeholder-gray-400"
       />
     </div>
 
+    <!-- Links -->
     <div id="linksContainer" class="space-y-8">
+      <!-- Seção 1 -->
       <section>
         <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
           <i data-lucide="globe" class="w-5 h-5 text-purple-400"></i>
           Sistemas e Portais
         </h2>
         <ul class="grid sm:grid-cols-2 gap-2">
-          <li><a href="https://conecta.gbringel.com" target="_blank" class="block bg-orange-900/30 hover:bg-orange-800/50 p-3 rounded-lg">Conecta Gbringel</a></li>
-          <li><a href="https://admin.microsoft.com/" target="_blank" class="block bg-blue-900/30 hover:bg-blue-800/50 p-3 rounded-lg">Microsoft 365 Admin Center</a></li>
-          <li><a href="https://admin.exchange.microsoft.com/" target="_blank" class="block bg-purple-900/30 hover:bg-purple-800/50 p-3 rounded-lg">Exchange Admin Center (EAC)</a></li>
-          <li><a href="https://compliance.microsoft.com" target="_blank" class="block bg-indigo-900/30 hover:bg-indigo-800/50 p-3 rounded-lg">Microsoft Purview</a></li>
-          <li><a href="https://security.microsoft.com" target="_blank" class="block bg-red-900/30 hover:bg-red-800/50 p-3 rounded-lg">Microsoft Security</a></li>
+          <li><a href="https://conecta.gbringel.com" target="_blank" aria-label="Conecta Gbringel" title="Conecta Gbringel" class="block bg-orange-900/30 hover:bg-orange-800/50 p-3 rounded-lg">Conecta Gbringel</a></li>
+          <li><a href="https://admin.microsoft.com/" target="_blank" aria-label="Microsoft 365 Admin Center" title="Microsoft 365 Admin Center" class="block bg-blue-900/30 hover:bg-blue-800/50 p-3 rounded-lg">Microsoft 365 Admin Center</a></li>
+          <li><a href="https://admin.exchange.microsoft.com/" target="_blank" aria-label="Exchange Admin Center" title="Exchange Admin Center (EAC)" class="block bg-purple-900/30 hover:bg-purple-800/50 p-3 rounded-lg">Exchange Admin Center (EAC)</a></li>
+          <li><a href="https://compliance.microsoft.com" target="_blank" aria-label="Microsoft Purview" title="Microsoft Purview" class="block bg-indigo-900/30 hover:bg-indigo-800/50 p-3 rounded-lg">Microsoft Purview</a></li>
+          <li><a href="https://security.microsoft.com" target="_blank" aria-label="Microsoft Security" title="Microsoft Security" class="block bg-red-900/30 hover:bg-red-800/50 p-3 rounded-lg">Microsoft Security</a></li>
         </ul>
       </section>
 
+      <!-- Seção 2 -->
       <section>
         <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
           <i data-lucide="file-spreadsheet" class="w-5 h-5 text-green-400"></i>
@@ -61,6 +97,7 @@
         </ul>
       </section>
 
+      <!-- Seção 3 -->
       <section>
         <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
           <i data-lucide="printer" class="w-5 h-5 text-blue-400"></i>
@@ -72,19 +109,33 @@
       </section>
     </div>
 
+    <!-- Rodapé -->
     <footer class="text-center text-sm text-gray-400 mt-10">
-      Feito com ❤️ por Miqueias — 
+      Feito por Miqueias — 
       <a href="https://github.com/miqueiascavalcant04" target="_blank" class="underline hover:text-blue-400">GitHub</a>
     </footer>
-  </div>
+  </main>
 
+  <!-- Scripts -->
   <script>
     lucide.createIcons();
+
+    // Busca em tempo real
     document.getElementById('search').addEventListener('input', (e) => {
       const term = e.target.value.toLowerCase();
       document.querySelectorAll('#linksContainer a').forEach(link => {
         link.closest('li').style.display = link.textContent.toLowerCase().includes(term) ? '' : 'none';
       });
+    });
+
+    // Alternância entre modo claro e escuro
+    const btn = document.getElementById('toggleDarkMode');
+    btn.addEventListener('click', () => {
+      document.documentElement.classList.toggle('dark');
+      btn.innerHTML = document.documentElement.classList.contains('dark')
+        ? '<i data-lucide="sun"></i>'
+        : '<i data-lucide="moon"></i>';
+      lucide.createIcons();
     });
   </script>
 </body>
