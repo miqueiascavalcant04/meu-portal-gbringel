@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portal de Acessos - Miqueias</title>
+
+  <script>
+    tailwind = { config: { darkMode: 'class' } }
+  </script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    * { transition: all 0.25s ease-in-out; }
+  </style>
+</head>
+
+<body class="bg-gray-900 text-gray-100 min-h-screen flex flex-col items-center p-6">
+
+  <div class="w-full max-w-3xl bg-gray-800 shadow-2xl rounded-2xl p-8 mt-10">
+    <div class="flex items-center justify-between mb-8">
+      <h1 class="text-3xl font-bold flex items-center gap-2">
+        <i data-lucide="grid" class="w-7 h-7 text-blue-500"></i>
+        Portal de Acessos
+      </h1>
+    </div>
+
+    <div class="mb-6">
+      <input
+        type="text"
+        id="search"
+        placeholder="🔍 Buscar..."
+        class="w-full px-4 py-3 border rounded-lg focus:ring-2 focus:ring-blue-500 focus:outline-none bg-gray-900 border-gray-700 placeholder-gray-400"
+      />
+    </div>
+
+    <div id="linksContainer" class="space-y-8">
+      <section>
+        <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+          <i data-lucide="globe" class="w-5 h-5 text-purple-400"></i>
+          Sistemas e Portais
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-2">
+          <li><a href="https://conecta.gbringel.com" target="_blank" class="block bg-orange-900/30 hover:bg-orange-800/50 p-3 rounded-lg">Conecta Gbringel</a></li>
+          <li><a href="https://admin.microsoft.com/" target="_blank" class="block bg-blue-900/30 hover:bg-blue-800/50 p-3 rounded-lg">Microsoft 365 Admin Center</a></li>
+          <li><a href="https://admin.exchange.microsoft.com/" target="_blank" class="block bg-purple-900/30 hover:bg-purple-800/50 p-3 rounded-lg">Exchange Admin Center (EAC)</a></li>
+          <li><a href="https://compliance.microsoft.com" target="_blank" class="block bg-indigo-900/30 hover:bg-indigo-800/50 p-3 rounded-lg">Microsoft Purview</a></li>
+          <li><a href="https://security.microsoft.com" target="_blank" class="block bg-red-900/30 hover:bg-red-800/50 p-3 rounded-lg">Microsoft Security</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+          <i data-lucide="file-spreadsheet" class="w-5 h-5 text-green-400"></i>
+          Planilhas
+        </h2>
+        <ul class="grid sm:grid-cols-2 gap-2">
+          <li><a href="https://bringel-my.sharepoint.com/:x:/r/personal/gids_gbringel_com/_layouts/15/doc2.aspx?sourcedoc=%7B2314B2B2-E515-4D07-BDE1-BCCDB6E51637%7D" target="_blank" class="block bg-green-900/30 hover:bg-green-800/50 p-3 rounded-lg">Planilha de Licenças Microsoft</a></li>
+          <li><a href="https://docs.google.com/spreadsheets/d/EXEMPLO2" target="_blank" class="block bg-green-900/30 hover:bg-green-800/50 p-3 rounded-lg">Inventário TI</a></li>
+        </ul>
+      </section>
+
+      <section>
+        <h2 class="text-xl font-semibold mb-3 flex items-center gap-2">
+          <i data-lucide="printer" class="w-5 h-5 text-blue-400"></i>
+          Impressoras
+        </h2>
+        <ul>
+          <li><a href="impressoras.html" class="block bg-blue-900/30 hover:bg-blue-800/50 p-3 rounded-lg text-center font-medium">Ver todas as impressoras →</a></li>
+        </ul>
+      </section>
+    </div>
+
+    <footer class="text-center text-sm text-gray-400 mt-10">
+      Feito com ❤️ por Miqueias — 
+      <a href="https://github.com/miqueiascavalcant04" target="_blank" class="underline hover:text-blue-400">GitHub</a>
+    </footer>
+  </div>
+
+  <script>
+    lucide.createIcons();
+    document.getElementById('search').addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase();
+      document.querySelectorAll('#linksContainer a').forEach(link => {
+        link.closest('li').style.display = link.textContent.toLowerCase().includes(term) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
